@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<!-- 不加这个标签，手机浏览器打开这个页面时候，会按照手机的实际像素去渲染页面中的内容
+	     这就会导致所有的东西都很小
+	     加上这个标签，手机浏览器会按照逻辑像素取渲染页面内容，这样我们就可以根据不同手机的逻辑像素区布局 
+	 -->
+	<title>手机联系人</title>
+	<link rel="stylesheet" href="css/index.css">
+	
+</head>
+
+<body>
+    <div class="header">
+     	<span class="back">☚</span>
+     	<ul class="anniu">
+     		<li><span class="fresh">★</span></li>
+     		<li><span class="add">+</span></li>
+     	</ul>
+    </div>
+    <div class="container">
+    	<div class="container-inner">
+	     	<dl class="contact">
+	     	</dl>
+	     	<div class="findlist">
+		     	<ul>
+		     	</ul>
+	        </div>
+        </div>
+    </div>
+    <div class="card-info">
+     	<div class="card-con">
+     		<div class="ava"></div>
+     		<ul class="info">
+     			<li class="con-n c">
+     				<strong>Name:</strong> 
+     				<span class="w" data-role="name"><input type="text" class="new" name="name" placeholder="姓名" ></span>
+     			</li>
+     			<li class="con-t c">
+     				<strong>TEL: </strong>
+     				<span class="w t" data-role="phone"><input type="text" class="new" name="phone" placeholder="电话"></span>
+     			</li>
+     			<li class="con-info c">
+     				<strong>Other: </strong>
+     				<span class="w i" data-role="beizhu"><input type="text" class="new" name="beizhu" placeholder="备注"></span>
+     			</li>
+     		</ul>
+     		<ul class="oporation">
+     			<li><span class="button finish">完成</span></li>
+     			<li><span class="button cancle">取消</span></li>
+                <li><span class="button delete">删除</span></li>
+     		</ul>
+     	</div>
+    </div>
+    <script src="jquery工程文件/jquery-1.12.0.js"></script>
+    <script src="js/ajax.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>

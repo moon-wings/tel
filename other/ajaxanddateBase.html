@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	ul,li,h3,h4{
+		margin:0;
+		padding:0;
+		list-style:none;
+	}
+	ul li{
+		background:pink;
+		padding:20px;
+		display:inline-block;
+		color:#fff;
+		margin-bottom:30px;
+	}
+	h4{
+	    border-bottom:1px solid red;
+	    padding-bottom:5px;
+	    margin-bottom:10px;
+	    font-family:Arial;
+	}
+	.result{
+		padding:30px;
+		border:1px solid #000;
+	}
+</style>
+<body>
+	<ul>
+		<li>从数据库取数据</li>
+		<li>从数据库删除数据</li>
+		<li>更新数据库</li>
+		<li>新增数据</li>
+	</ul>
+	<h4>以下为服务器返回的结果</h4>
+	<pre class="result">
+		
+	</pre>
+	<script>
+		var $ = [];
+		$.ajax = function(url,callback){
+			var xhr=new XMLHttpRequest();
+			xhr.addEventListener('readystatechange',function(){
+				if(this.readyState!=4){
+					return;
+				}
+				if(this.status===200||this.status===304){
+					callback(this.response)
+				}
+			})
+			xhr.open('get',url,true);
+	        xhr.send()
+		}
+
+//catch
+		var ul = document.querySelector('ul');
+		var pre=document.querySelector('pre');
+		// ul.children[0].addEventListener('click',function(){
+		// 	$.ajax('/robot.txt',function(data){
+		// 		pre.innerHTML =data
+		// 	})
+		// }) //从数据库读取文件
+
+		ul.children[0].addEventListener('click',function(){
+			$.ajax('/php/huoqulianxiren.php',function(data){
+				console.log(data);
+				pre.innerHTML=data;
+			})
+		})
+
+//delete
+		ul.children[1].addEventListener('click',function(){
+			$.ajax('/php/shanchulianxiren.php?id=3',function(data){
+				console.log(data)
+			})
+		})
+
+//update
+		ul.children[2].addEventListener('click',function(){
+			$.ajax('/php/gengxinlianxiren.php?id=4&shuxing=phone&value='+Math.random(),function(data){
+				console.log(data)
+			})
+		})
+//add
+		ul.children[3].addEventListener('click',function(){
+			$.ajax('/php/addlianxiren.php?name=aaa&phone=123456&beizhu=bbb',function(data){
+				console.log(data)
+			})
+		})
+
+
+
+	</script>
+</body>
+</html>

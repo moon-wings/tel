@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>jquery中的ajax</title>
+</head>
+<style>
+	.one{
+		width:50px;
+		height:20px;
+		background:#66cd00;
+		opacity:0;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+</style>
+<body>
+	<h1>主页</h1>
+	<div class="one"></div>
+	<script src="jquery-1.12.0.js"></script>
+	<script>
+		// $('h1').load('source/test.html',function(){
+		//    console.log(1)
+		// })
+        // $.get('source/test.json',function(data){
+        // 	console.log(data)
+        // })
+        // $.get('source/test.php',{a:1,b:2},function(data){
+        // 	console.log(data)
+        // },'json')  //Object {a: "1", b: "2"}
+        // $.get('source/test.php',{a:[1,2,3],b:2},function(data){
+        // 	console.log(data)
+        // },'html')   //{"a":["1","2","3"],"b":"2"}     if:$.type(data) result:string
+		// var _d={name:"linlin",password:123456}
+		// $.post('source/test.php',_d,function(data){
+  //       	console.log(data)
+  //       },'json') 
+		// $.getJSON('source/test.json',function(data){
+		// 	console.log(data)
+		// }) 
+		// $(document).on('click',function(){
+ 	// 		$.getJSON('source/test.json',function(data){
+		// 	      console.log(data)
+		//     }) 
+		// }) 
+		// $(document).ajaxStart(function(){
+		// 	console.log('start')
+		// })
+		// $(document).ajaxSend(function(){
+		// 	console.log('sent')
+		// })
+		// $(document).ajaxComplete(function(){
+		// 	console.log('complete')
+		// })
+		// $(document).ajaxStop(function(){
+		// 	console.log('stop')
+		// })
+		// $(document).ajaxSuccess(function(){
+		// 	console.log('success')
+		// })
+		// //顺序为：start send [1, 2, 3] success complete stop
+
+		var one = $('.one');
+		$(document).on('click',function(){
+ 			$.getJSON('source/test.php',function(data){
+			     
+		    }) 
+		}) 
+		$(document).ajaxStart(function(){
+			one.stop(true,true).css({
+				width:50,
+				opacity:0,
+				background:'#66cd00'
+			})
+			one
+			.animate({opacity:1},40)
+		})
+		$(document).ajaxSend(function(){
+			one
+			.animate({width:$(window).outerWidth(true)*0.8},1000)
+		})
+		$(document).ajaxSuccess(function(){
+			one.delay(30)
+			.queue(function(){$(this).css('background','#7fff00').dequeue()})
+			.animate({width:$(window).outerWidth(true)},800)
+		})
+		$(document).ajaxError(function(){
+			one
+			.finish() 
+			.css('background','red')
+			.animate({left:0,top:0,opacity:0},400)
+		})
+		$(document).ajaxComplete(function(){
+			one.animate({opacity:0},200)
+		})
+	</script>
+</body>
+</html>
+<!-- {width:$(window).outerWidth(true)} -->
