@@ -151,13 +151,16 @@ a{
 	border-radius: 10px;
 }
 .card-con .ava{
-	width:80px;
-	height:80px;
-	border-radius:50%;
-	border:1px solid #000;
-	float:left;
-	box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.3);
-	background: url(../img/01.jpg) no-repeat 0 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    float: left;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    background: url(../img/01.jpg) no-repeat 0 0;
+    position: absolute;
+    top: 6%;
+    left: 64%;
 }
 .card-con .info{
 	float:left;
@@ -206,7 +209,7 @@ strong{
 }
 .card-con .oporation{
 	float:left;
-	width:100%;
+	width:110%;
 	height:auto;
 	margin-top:10px;
 }
